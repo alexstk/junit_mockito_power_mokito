@@ -1,12 +1,22 @@
 package com.in28minutes.junit.helper;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class StringHelperTest {
 	
-	StringHelper helper = new StringHelper();
+	StringHelper helper;
+	
+	@Before
+	public void setup() {
+		helper = new StringHelper();
+	}
+	
+	
 
 	// AACD => CD	ACD => CD	CDEF => CDEF	CDAA => CDAA
 	@Test
