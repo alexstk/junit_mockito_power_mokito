@@ -29,7 +29,7 @@ public class StringHelperParameterizedTest {
 	public static Collection<String[]> testConditions() {
 		String[][] expectedOutputs = { 
 			{ "AACD", "CD" },
-			{ "AD", "CD" } 
+			{ "ACD", "CD" } 
 		};
 		System.out.println("Load Test Conditions");
 		return Arrays.asList(expectedOutputs);
