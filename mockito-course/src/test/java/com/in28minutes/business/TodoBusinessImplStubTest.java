@@ -2,7 +2,6 @@ package com.in28minutes.business;
 
 import static org.junit.Assert.*;
 
-import java.util.Collections;
 import java.util.List;
 
 import org.junit.Test;
