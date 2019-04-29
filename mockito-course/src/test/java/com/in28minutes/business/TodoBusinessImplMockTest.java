@@ -1,6 +1,8 @@
 package com.in28minutes.business;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -46,6 +48,21 @@ public class TodoBusinessImplMockTest {
 		assertEquals(0, filteredTodos.size());
 	}
 	
-	
+	@Test
+	public void retrieveTodosRelatedToSpring_usingBDD() {
+		// Use BDD is very similar like normal test. Is a way to organize test
+		// Given - Setup
+		TodoService todoServiceMock = mock(TodoService.class);
+		List<String> todos =  Arrays.asList("Learn Spring MVC", "Learn Spring", "Learn to Dance");
+		given(todoServiceMock.retrieveTodos("Dummy")).willReturn(todos);
+		
+		TodoBusinessImpl todoBusinessImpl = new TodoBusinessImpl(todoServiceMock);
+
+		// When - Execution
+		List<String> filteredTodos = todoBusinessImpl.retrieveTodosRelatedToSpring("Dummy");
+		
+		// Then - Check
+		assertThat(filteredTodos.size(), is(2));
+	}
 
 }
