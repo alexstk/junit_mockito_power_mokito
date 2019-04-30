@@ -3,6 +3,7 @@ package com.in28minutes.business;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.mock;
@@ -92,11 +93,33 @@ public class TodoBusinessImplMockTest {
 		// This verifies that deleteTodo() is called at least 1 time with "Learn to Dance" as an argument
 		verify(todoServiceMock, atLeastOnce()).deleteTodo("Learn to Dance");
 
-		// This verifies that deleteTodo() is called at least 5 times with "Learn to Dance" as an argument
-		verify(todoServiceMock, atLeast(5)).deleteTodo("Learn to Dance");
+		// This verifies that deleteTodo() is called at least 1 times with "Learn to Dance" as an argument
+		verify(todoServiceMock, atLeast(1)).deleteTodo("Learn to Dance");
 		
 		// This verifies that deleteTodo() is never called with "Learn Spring MVC" as an argument
 		verify(todoServiceMock, never()).deleteTodo("Learn Spring MVC");
 	}
+	
+	@Test
+	public void deleteTodosNotRelatedToSpring_usingBDDWithGivenThenWhenSintax() {
+		// Given
+		TodoService todoServiceMock = mock(TodoService.class);
+		List<String> todos =  Arrays.asList("Learn Spring MVC", "Learn Spring", "Learn to Dance");
+		given(todoServiceMock.retrieveTodos("Dummy")).willReturn(todos);
+		
+		TodoBusinessImpl todoBusinessImpl = new TodoBusinessImpl(todoServiceMock);
+
+		// When
+		todoBusinessImpl.deleteTodosNotRelatedToSpring("Dummy");
+		
+		// Then - Check
+		// This is equivalent to the verify. The difference is this is BDD style
+		then(todoServiceMock).should().deleteTodo("Learn to Dance");
+		then(todoServiceMock).should(times(1)).deleteTodo("Learn to Dance");
+		then(todoServiceMock).should(atLeastOnce()).deleteTodo("Learn to Dance");
+		then(todoServiceMock).should(atLeast(1)).deleteTodo("Learn to Dance");
+		then(todoServiceMock).should(never()).deleteTodo("Learn Spring MVC");
+	}
+	
 	
 }
