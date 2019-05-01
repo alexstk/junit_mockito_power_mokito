@@ -173,7 +173,7 @@ public class TodoBusinessImplMockTest {
 		// When
 		todoBusinessImpl.deleteTodosNotRelatedToSpring("Dummy");
 		
-		// Then
+		// Then 
 		then(todoServiceMock).should(times(2)).deleteTodo(stringArgumentCaptor.capture());
 		assertThat(
 				stringArgumentCaptor.getAllValues(), 
