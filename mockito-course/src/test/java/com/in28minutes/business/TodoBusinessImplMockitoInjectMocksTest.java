@@ -15,19 +15,23 @@ import static org.mockito.Mockito.when;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnit;
+import org.mockito.junit.MockitoRule;
 
 import com.in28Minutes.business.TodoBusinessImpl;
 import com.in28Minutes.data.api.TodoService;
 
-@RunWith(MockitoJUnitRunner.class)
 public class TodoBusinessImplMockitoInjectMocksTest {
+
+	@Rule
+	public MockitoRule mockitoRule = MockitoJUnit.rule();
+	
 	@Mock
 	TodoService todoServiceMock;
 	
