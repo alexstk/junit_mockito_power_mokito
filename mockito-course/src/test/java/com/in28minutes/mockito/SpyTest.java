@@ -11,13 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
-import org.mockito.Spy;
 
 public class SpyTest {
 	// Mocks return default value
 	// A mock does not get any logic from actual class it is mocking
 	// A spy does get all logic from actual class it is spying. Spy is also called a Partial Method
 	// We can use @Spy like @Mock
+	// Avoid the use of Spy. It may be applied in legacy systems where you don't have access to any logic
 	@Test
 	public void testWithMock() {
 		List arrayListMock = mock(ArrayList.class);
