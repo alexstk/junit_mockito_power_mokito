@@ -1,6 +1,7 @@
 package com.in28Minutes.powermock;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class SystemUnderTest {
@@ -26,5 +27,20 @@ public class SystemUnderTest {
 		for (int stat : stats)
 			sum += stat;
 		return sum;
+	}
+
+	private static long privateStaticMethodUnderTest() {
+		List<Integer> stats = Arrays.asList(1, 2, 3);
+		long sum = 0;
+		for (int stat : stats)
+			sum += stat;
+		return sum;
+	}
+
+	private static void privateStaticVoidMethodUnderTest() {
+		List<Integer> stats = Arrays.asList(1, 2, 3);
+		long sum = 0;
+		for (int stat : stats)
+			sum += stat;
 	}
 }
