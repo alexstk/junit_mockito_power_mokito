@@ -3,10 +3,6 @@ package com.in28Minutes.powermock;
 import java.util.ArrayList;
 import java.util.List;
 
-interface Dependency {
-	List<Integer> retrieveAllStats();
-}
-
 public class SystemUnderTest {
 	private Dependency dependency;
 
