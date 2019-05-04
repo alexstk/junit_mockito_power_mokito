@@ -50,4 +50,3 @@ public class InvokingPrivateMethodTest {
 	
 }
 
-//@PrepareForTest(SystemUnderTest.class)

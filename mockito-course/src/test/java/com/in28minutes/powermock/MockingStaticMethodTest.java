@@ -67,7 +67,7 @@ public class MockingStaticMethodTest {
 		int result = systemUnderTest.methodCallingAStaticMethod();
 		assertEquals(150, result);
 		
-		PowerMockito.verifyStatic();	// Verifies next mocked static method
+		PowerMockito.verifyStatic();	// Verifies mocked static method
 		//UtilityClass.staticMethod(6);	// This is the call we want to verify
 		
 	}
